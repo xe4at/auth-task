@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "../src/pages/Login";
 import Me from "../src/pages/Me";
 import PageNotFound from "../src/pages/PageNotFound";
-import PrivateRoute from "../private/PrivateRoute";
+import PrivateRoute from "../router/PrivateRoute";
 
 const App = () => {
   return (
