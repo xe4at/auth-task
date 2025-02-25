@@ -42,6 +42,14 @@ const Me = () => {
     };
 
     fetchData();
+
+    const timer = setTimeout(() => {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      navigate("/login");
+    }, 120000); 
+
+    return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
