@@ -47,10 +47,16 @@ const Me = () => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       navigate("/login");
-    }, 120000); 
+    }, 120000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    navigate("/login");
+  };
 
   return (
     <div className={styles.container}>
@@ -59,6 +65,9 @@ const Me = () => {
         {userData && (
           <pre className={styles.data}>{JSON.stringify(userData, null, 2)}</pre>
         )}
+        <button className={styles.logoutButton} onClick={logout}>
+          Logout
+        </button>
       </div>
     </div>
   );

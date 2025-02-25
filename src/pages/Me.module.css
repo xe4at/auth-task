@@ -1,80 +1,95 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 1rem;
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 1rem;
+  color: white;
 }
 
 .profile {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
-    transition: transform 0.3s ease;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  transition: transform 0.3s ease;
 }
 
 .profile:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .data {
-    background-color: #000000;
-    padding: 1.5rem;
-    border-radius: 12px;
-    font-family: 'Courier New', monospace;
-    text-align: left;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    border: 1px solid #ddd;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    overflow: auto;
+  background-color: #000000;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: "Courier New", monospace;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: auto;
 }
 
 .data:hover {
-    border-color: #007bff;
-    box-shadow: inset 0 0 12px rgba(0, 123, 255, 0.3);
+  border-color: #007bff;
+  box-shadow: inset 0 0 12px rgba(0, 123, 255, 0.3);
+}
+
+.logoutButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff5c5c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #ff1c1c;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ریسپانسیو */
 @media (max-width: 768px) {
-    .profile {
-        padding: 2rem;
-        border-radius: 12px;
-    }
+  .profile {
+    padding: 2rem;
+    border-radius: 12px;
+  }
 
-    .title {
-        font-size: 2rem;
-    }
+  .title {
+    font-size: 2rem;
+  }
 
-    .data {
-        padding: 1rem;
-        font-size: 0.95rem;
-    }
+  .data {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
 }
