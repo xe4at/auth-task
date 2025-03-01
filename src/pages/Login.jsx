@@ -2,6 +2,7 @@ import { login } from "../api/api";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
+import Cookies from "js-cookie"; 
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,8 +13,8 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const tokens = await login(username, password);
-      localStorage.setItem("accessToken", tokens.access);
-      localStorage.setItem("refreshToken", tokens.refresh);
+      Cookies.set("accessToken", tokens.access, { expires: 1 }); 
+      Cookies.set("refreshToken", tokens.refresh, { expires: 7 });
       navigate("/me");
     } catch (error) {
       console.error("Login failed", error);

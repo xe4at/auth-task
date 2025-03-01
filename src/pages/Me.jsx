@@ -2,6 +2,7 @@ import { getUserData, refreshToken } from "../api/api";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Me.module.css";
+import Cookies from "js-cookie"; 
 
 const Me = () => {
   const [userData, setUserData] = useState(null);
@@ -9,8 +10,8 @@ const Me = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let accessToken = localStorage.getItem("accessToken");
-      const refreshTokenValue = localStorage.getItem("refreshToken");
+      let accessToken = Cookies.get("accessToken"); 
+      const refreshTokenValue = Cookies.get("refreshToken"); 
 
       if (!accessToken || !refreshTokenValue) {
         navigate("/login");
@@ -24,14 +25,14 @@ const Me = () => {
         if (error.response && error.response.status === 401) {
           try {
             const newTokens = await refreshToken(refreshTokenValue);
-            localStorage.setItem("accessToken", newTokens.access);
-            localStorage.setItem("refreshToken", newTokens.refresh);
+            Cookies.set("accessToken", newTokens.access, { expires: 1 });
+            Cookies.set("refreshToken", newTokens.refresh, { expires: 7 });
             const data = await getUserData(newTokens.access);
             setUserData(data);
           } catch (refreshError) {
             console.error("Token refresh failed", refreshError);
-            localStorage.removeItem("accessToken");
-            localStorage.removeItem("refreshToken");
+            Cookies.remove("accessToken");
+            Cookies.remove("refreshToken");
             navigate("/login");
           }
         } else {
@@ -44,8 +45,8 @@ const Me = () => {
     fetchData();
 
     const timer = setTimeout(() => {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
+      Cookies.remove("accessToken");
+      Cookies.remove("refreshToken");
       navigate("/login");
     }, 120000);
 
@@ -53,8 +54,8 @@ const Me = () => {
   }, [navigate]);
 
   const logout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    Cookies.remove("accessToken");
+    Cookies.remove("refreshToken");
     navigate("/login");
   };
 
